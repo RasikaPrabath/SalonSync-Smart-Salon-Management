@@ -9,15 +9,9 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "/icons/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
       "purpose": "maskable any"
     }
   ],
@@ -26,13 +20,13 @@
       "name": "Add Sale",
       "short_name": "Sale",
       "url": "/sales/new",
-      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "192x192 512x512", "type": "image/svg+xml" }]
     },
     {
       "name": "Add Appointment",
       "short_name": "Appointment",
       "url": "/appointments/new",
-      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "192x192 512x512", "type": "image/svg+xml" }]
     }
   ],
   "categories": ["business", "finance", "productivity"]
