@@ -10,6 +10,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useToast } from '@/components/ui/toaster'
 import Link from 'next/link'
 
+import { addSale } from '@/app/actions/sales'
+
 const paymentOptions = [
   { value: 'cash', label: 'Cash' },
   { value: 'card', label: 'Card' },
@@ -33,9 +35,13 @@ export default function NewSalePage() {
     if (!form.amount || isNaN(Number(form.amount))) return
 
     setLoading(true)
-    // Simulate save
-    await new Promise(r => setTimeout(r, 600))
+    const { error } = await addSale(Number(form.amount), form.paymentMethod, form.note)
     setLoading(false)
+
+    if (error) {
+      toast({ type: 'error', title: 'Error adding sale', description: error })
+      return
+    }
 
     toast({ type: 'success', title: t('saved') })
     router.push('/sales')
