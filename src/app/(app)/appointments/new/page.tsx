@@ -53,7 +53,7 @@ export default function NewAppointmentPage() {
   }
 
   return (
-    <div className="max-w-lg">
+    <div className="max-w-2xl mx-auto w-full pt-4">
       <div className="flex items-center gap-3 mb-6">
         <Link href="/appointments">
           <Button variant="ghost" size="icon"><ArrowLeft className="w-4 h-4" /></Button>

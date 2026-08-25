@@ -21,7 +21,7 @@ export default async function StaffProfilePage({
   const commission = (totalRevenue * staff.commissionPercent) / 100
 
   return (
-    <div className="max-w-lg space-y-5">
+    <div className="max-w-2xl mx-auto w-full space-y-5">
       <div className="flex items-center gap-3">
         <Link href="/staff"><Button variant="ghost" size="icon"><ArrowLeft className="w-4 h-4" /></Button></Link>
         <h1 className="text-page-title">{staff.name}</h1>

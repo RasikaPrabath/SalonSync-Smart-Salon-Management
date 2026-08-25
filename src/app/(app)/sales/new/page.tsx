@@ -48,7 +48,7 @@ export default function NewSalePage() {
   }
 
   return (
-    <div className="max-w-xl mx-auto w-full pt-4">
+    <div className="w-full">
       <div className="flex items-center gap-3 mb-6">
         <Link href="/sales">
           <Button variant="ghost" size="icon">
@@ -68,40 +68,46 @@ export default function NewSalePage() {
           </div>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              label={t('amount')}
-              type="number"
-              min="0"
-              step="50"
-              placeholder="0"
-              required
-              value={form.amount}
-              onChange={e => setForm(p => ({ ...p, amount: e.target.value }))}
-            />
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <Input
+                  label={t('amount')}
+                  type="number"
+                  min="0"
+                  step="50"
+                  placeholder="0"
+                  required
+                  value={form.amount}
+                  onChange={e => setForm(p => ({ ...p, amount: e.target.value }))}
+                />
+                
+                <Select
+                  label={t('paymentMethod')}
+                  options={paymentOptions}
+                  value={form.paymentMethod}
+                  onChange={e => setForm(p => ({ ...p, paymentMethod: e.target.value }))}
+                />
+              </div>
 
-            <Select
-              label={t('paymentMethod')}
-              options={paymentOptions}
-              value={form.paymentMethod}
-              onChange={e => setForm(p => ({ ...p, paymentMethod: e.target.value }))}
-            />
+              <div className="h-full">
+                <Textarea
+                  label={t('note')}
+                  placeholder={t('notePlaceholder')}
+                  value={form.note}
+                  onChange={e => setForm(p => ({ ...p, note: e.target.value }))}
+                  className="h-[120px] resize-none"
+                />
+              </div>
+            </div>
 
-            <Textarea
-              label={t('note')}
-              placeholder={t('notePlaceholder')}
-              value={form.note}
-              onChange={e => setForm(p => ({ ...p, note: e.target.value }))}
-              rows={3}
-            />
-
-            <div className="flex gap-3 pt-2">
-              <Link href="/sales" className="flex-1">
-                <Button variant="secondary" className="w-full" type="button">
+            <div className="flex gap-3 pt-4 border-t border-[hsl(var(--border-subtle))] md:justify-end">
+              <Link href="/sales" className="flex-1 md:flex-none">
+                <Button variant="secondary" className="w-full md:w-auto" type="button">
                   Cancel
                 </Button>
               </Link>
-              <Button type="submit" loading={loading} className="flex-1">
+              <Button type="submit" loading={loading} className="flex-1 md:flex-none">
                 Record Sale
               </Button>
             </div>

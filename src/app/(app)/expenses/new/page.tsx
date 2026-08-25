@@ -51,7 +51,7 @@ export default function NewExpensePage() {
   }
 
   return (
-    <div className="max-w-xl mx-auto w-full pt-4">
+    <div className="w-full">
       <div className="flex items-center gap-3 mb-6">
         <Link href="/expenses">
           <Button variant="ghost" size="icon"><ArrowLeft className="w-4 h-4" /></Button>
@@ -68,18 +68,48 @@ export default function NewExpensePage() {
           </div>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Select label={t('category')} options={categoryOptions} value={form.category}
-              onChange={e => setForm(p => ({ ...p, category: e.target.value }))} />
-            <Input label={t('amount')} type="number" min="0" step="50" placeholder="0" required
-              value={form.amount} onChange={e => setForm(p => ({ ...p, amount: e.target.value }))} />
-            <Textarea label={t('note')} placeholder={t('notePlaceholder')} value={form.note}
-              onChange={e => setForm(p => ({ ...p, note: e.target.value }))} rows={3} />
-            <div className="flex gap-3 pt-2">
-              <Link href="/expenses" className="flex-1">
-                <Button variant="secondary" className="w-full" type="button">Cancel</Button>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <Input
+                  label={t('amount')}
+                  type="number"
+                  min="0"
+                  step="50"
+                  placeholder="0"
+                  required
+                  value={form.amount}
+                  onChange={e => setForm(p => ({ ...p, amount: e.target.value }))}
+                />
+                
+                <Select
+                  label={t('category')}
+                  options={categoryOptions}
+                  value={form.category}
+                  onChange={e => setForm(p => ({ ...p, category: e.target.value }))}
+                />
+              </div>
+
+              <div className="h-full">
+                <Textarea
+                  label={t('note')}
+                  placeholder={t('notePlaceholder')}
+                  value={form.note}
+                  onChange={e => setForm(p => ({ ...p, note: e.target.value }))}
+                  className="h-[120px] resize-none"
+                />
+              </div>
+            </div>
+
+            <div className="flex gap-3 pt-4 border-t border-[hsl(var(--border-subtle))] md:justify-end">
+              <Link href="/expenses" className="flex-1 md:flex-none">
+                <Button variant="secondary" className="w-full md:w-auto" type="button">
+                  Cancel
+                </Button>
               </Link>
-              <Button type="submit" loading={loading} className="flex-1">Record Expense</Button>
+              <Button type="submit" loading={loading} className="flex-1 md:flex-none">
+                Record Expense
+              </Button>
             </div>
           </form>
         </CardContent>
