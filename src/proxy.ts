@@ -13,9 +13,10 @@ export default function proxy(request: NextRequest) {
   // Auth guard (activated when NEXT_PUBLIC_DEMO_MODE=false)
   const publicRoutes = ['/', '/login', '/signup', '/onboarding', '/forgot-password', '/reset-password', '/pricing']
   const isPublic = publicRoutes.some(r => pathname === r || pathname.startsWith(r + '/'))
-  const sessionCookie = request.cookies.get('sb-access-token')
+  // Check if any cookie matches the dynamic Supabase SSR cookie pattern (e.g., sb-[project-ref]-auth-token)
+  const hasSession = request.cookies.getAll().some(c => c.name.startsWith('sb-') && c.name.includes('-auth-token'))
 
-  if (!isPublic && !sessionCookie) {
+  if (!isPublic && !hasSession) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
