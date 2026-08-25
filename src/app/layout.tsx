@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Noto_Sans_Sinhala } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
+import Script from 'next/script'
 import { ThemeProvider } from '@/components/layout/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import './globals.css'
@@ -76,7 +77,9 @@ export default async function RootLayout({
         </ThemeProvider>
 
         {/* PWA Service Worker Registration */}
-        <script
+        <Script
+          id="pwa-sw-registration"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               if ('serviceWorker' in navigator) {
