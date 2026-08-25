@@ -41,14 +41,17 @@ export default function AppearanceSettingsPage() {
   if (!mounted) return null
 
   return (
-    <div className="max-w-xl space-y-5">
+    <div className="w-full space-y-6">
       {/* Theme */}
       <Card>
         <CardHeader>
-          <CardTitle>Theme</CardTitle>
+          <CardTitle>Theme Preferences</CardTitle>
+          <p className="text-xs text-[hsl(var(--foreground-muted))] mt-1">
+            Choose how SalonSync appears to you. Themes switch instantly.
+          </p>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {themes.map(({ value, label, icon: Icon, desc }) => (
               <button
                 key={value}
@@ -57,17 +60,24 @@ export default function AppearanceSettingsPage() {
                   toast({ type: 'success', title: `Theme set to ${label}` })
                 }}
                 className={cn(
-                  'flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-150',
+                  'flex flex-col items-center text-center gap-2.5 p-5 rounded-xl border-2 transition-all duration-150 cursor-pointer',
                   theme === value
-                    ? 'border-[hsl(var(--primary))] bg-[hsl(var(--primary-muted))]'
+                    ? 'border-[hsl(var(--primary))] bg-[hsl(var(--primary-muted))] shadow-sm'
                     : 'border-[hsl(var(--border))] hover:border-[hsl(var(--primary)/0.4)] bg-[hsl(var(--background-3))]'
                 )}
               >
-                <Icon className={cn('w-5 h-5', theme === value ? 'text-[hsl(var(--primary))]' : 'text-[hsl(var(--foreground-muted))]')} />
-                <span className={cn('text-xs font-medium', theme === value ? 'text-[hsl(var(--primary))]' : 'text-[hsl(var(--foreground-muted))]')}>
-                  {label}
-                </span>
-                <span className="text-[10px] text-[hsl(var(--foreground-subtle))]">{desc}</span>
+                <div className={cn(
+                  'w-10 h-10 rounded-xl flex items-center justify-center',
+                  theme === value ? 'bg-[hsl(var(--primary))] text-white' : 'bg-[hsl(var(--card))] text-[hsl(var(--foreground-muted))]'
+                )}>
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className={cn('text-sm font-semibold block', theme === value ? 'text-[hsl(var(--primary))]' : 'text-[hsl(var(--foreground))]')}>
+                    {label}
+                  </span>
+                  <span className="text-xs text-[hsl(var(--foreground-muted))] mt-0.5 block">{desc}</span>
+                </div>
               </button>
             ))}
           </div>
@@ -78,26 +88,37 @@ export default function AppearanceSettingsPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Globe className="w-4 h-4" /> Language
+            <Globe className="w-4 h-4 text-[hsl(var(--primary))]" /> Language / භාෂාව
           </CardTitle>
+          <p className="text-xs text-[hsl(var(--foreground-muted))] mt-1">
+            Select your preferred interface language.
+          </p>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {languages.map(({ code, label, native }) => (
               <button
                 key={code}
                 onClick={() => saveLanguage(code)}
                 className={cn(
-                  'flex flex-col items-center gap-1.5 p-4 rounded-xl border-2 transition-all duration-150',
+                  'flex items-center justify-between p-5 rounded-xl border-2 transition-all duration-150 cursor-pointer text-left',
                   selectedLang === code
-                    ? 'border-[hsl(var(--primary))] bg-[hsl(var(--primary-muted))]'
+                    ? 'border-[hsl(var(--primary))] bg-[hsl(var(--primary-muted))] shadow-sm'
                     : 'border-[hsl(var(--border))] hover:border-[hsl(var(--primary)/0.4)] bg-[hsl(var(--background-3))]'
                 )}
               >
-                <span className={cn('text-base font-bold', selectedLang === code ? 'text-[hsl(var(--primary))]' : 'text-[hsl(var(--foreground))]')}>
-                  {native}
-                </span>
-                <span className="text-xs text-[hsl(var(--foreground-muted))]">{label}</span>
+                <div>
+                  <span className={cn('text-lg font-bold block', selectedLang === code ? 'text-[hsl(var(--primary))]' : 'text-[hsl(var(--foreground))]')}>
+                    {native}
+                  </span>
+                  <span className="text-xs text-[hsl(var(--foreground-muted))]">{label}</span>
+                </div>
+                <div className={cn(
+                  'w-5 h-5 rounded-full border-2 flex items-center justify-center',
+                  selectedLang === code ? 'border-[hsl(var(--primary))]' : 'border-[hsl(var(--border-strong))]'
+                )}>
+                  {selectedLang === code && <div className="w-2.5 h-2.5 rounded-full bg-[hsl(var(--primary))]" />}
+                </div>
               </button>
             ))}
           </div>

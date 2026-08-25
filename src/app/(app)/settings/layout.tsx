@@ -19,8 +19,13 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
   const pathname = usePathname()
 
   return (
-    <div className="space-y-5">
-      <h1 className="text-page-title hidden lg:block">Settings</h1>
+    <div className="w-full max-w-4xl space-y-6">
+      <div>
+        <h1 className="text-page-title hidden lg:block">Settings</h1>
+        <p className="text-sm text-[hsl(var(--foreground-muted))] mt-1 hidden lg:block">
+          Manage your salon information, appearance preferences, team, and billing.
+        </p>
+      </div>
 
       {/* Settings nav tabs */}
       <div className="flex gap-1 overflow-x-auto pb-1 border-b border-[hsl(var(--border-subtle))]">
@@ -33,8 +38,8 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
               className={cn(
                 'flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-t-xl shrink-0 transition-all duration-150 border-b-2 -mb-[1px]',
                 isActive
-                  ? 'border-[hsl(var(--primary))] text-[hsl(var(--primary))] bg-[hsl(var(--primary-muted))]'
-                  : 'border-transparent text-[hsl(var(--foreground-muted))] hover:text-[hsl(var(--foreground))]'
+                  ? 'border-[hsl(var(--primary))] text-[hsl(var(--primary))] bg-[hsl(var(--primary-muted))] font-semibold'
+                  : 'border-transparent text-[hsl(var(--foreground-muted))] hover:text-[hsl(var(--foreground))] hover:bg-[hsl(var(--card))]'
               )}
             >
               <Icon className="w-4 h-4" />
@@ -45,7 +50,7 @@ export default function SettingsLayout({ children }: { children: React.ReactNode
       </div>
 
       {/* Content */}
-      <div>{children}</div>
+      <div className="w-full">{children}</div>
     </div>
   )
 }

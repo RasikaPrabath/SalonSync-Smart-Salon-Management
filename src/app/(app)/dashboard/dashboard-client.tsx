@@ -94,26 +94,51 @@ export function DashboardClient({ metrics }: { metrics: any }) {
       </div>
 
       {/* Hero Card — Today's Profit */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(16_55%_38%)] p-6 text-white shadow-lg">
-        <div className="relative z-10">
-          <p className="text-sm font-medium text-white/70 mb-1">{t('todayProfit')}</p>
-          <p className="text-hero font-tabular">
-            {formatCurrency(metrics.todayProfit)}
-          </p>
-          <div className="flex items-center gap-3 mt-3">
-            <Badge
-              variant={profitIsPositive ? 'success' : 'danger'}
-              className="bg-white/15 text-white border-white/20"
-            >
-              {profitIsPositive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-              {profitIsPositive ? 'Profitable today' : 'Running a loss today'}
-            </Badge>
+      <Card className="p-5 lg:p-6 bg-[hsl(var(--card))] border border-[hsl(var(--border))]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2.5 mb-1.5">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[hsl(var(--foreground-muted))]">
+                {t('todayProfit')}
+              </span>
+              <Badge
+                variant={profitIsPositive ? 'success' : 'danger'}
+                className="text-[11px] font-medium"
+              >
+                {profitIsPositive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+                {profitIsPositive ? 'Profitable today' : 'Running a loss today'}
+              </Badge>
+            </div>
+            <p className="text-3xl lg:text-4xl font-extrabold font-tabular text-[hsl(var(--foreground))] tracking-tight">
+              {formatCurrency(metrics.todayProfit)}
+            </p>
+          </div>
+
+          {/* Quick breakdown metrics pills */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+            <div className="px-3.5 py-2 rounded-xl bg-[hsl(var(--background-3))] border border-[hsl(var(--border-subtle))]">
+              <p className="text-[10px] text-[hsl(var(--foreground-muted))] uppercase font-semibold">Revenue</p>
+              <p className="text-sm font-bold text-[hsl(var(--foreground))] font-tabular">
+                {formatCurrency(metrics.todayRevenue)}
+              </p>
+            </div>
+            <div className="px-3.5 py-2 rounded-xl bg-[hsl(var(--background-3))] border border-[hsl(var(--border-subtle))]">
+              <p className="text-[10px] text-[hsl(var(--foreground-muted))] uppercase font-semibold">Expenses</p>
+              <p className="text-sm font-bold text-[hsl(var(--foreground))] font-tabular">
+                {formatCurrency(metrics.todayExpenses)}
+              </p>
+            </div>
+            <div className="px-3.5 py-2 rounded-xl bg-[hsl(var(--background-3))] border border-[hsl(var(--border-subtle))]">
+              <p className="text-[10px] text-[hsl(var(--foreground-muted))] uppercase font-semibold">Margin</p>
+              <p className="text-sm font-bold text-[hsl(var(--success-foreground))] font-tabular">
+                {metrics.todayRevenue > 0
+                  ? `${Math.round((metrics.todayProfit / metrics.todayRevenue) * 100)}%`
+                  : '0%'}
+              </p>
+            </div>
           </div>
         </div>
-        {/* Decorative circle */}
-        <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10" />
-        <div className="absolute -right-2 -bottom-8 w-20 h-20 rounded-full bg-white/8" />
-      </div>
+      </Card>
 
       {/* Metric Cards */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">

@@ -125,26 +125,23 @@ export default function InsightsPage() {
       </DesktopPageHeader>
 
       {/* AI Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(16_55%_35%)] to-purple-700 p-6 text-white shadow-md">
-        <div className="relative z-10">
-          <div className="flex items-center gap-2 mb-3">
-            <Sparkles className="w-5 h-5" />
-            <span className="text-sm font-semibold text-white/80">
-              {lang === 'si' ? 'AI විශ්ලේෂණය — මෙම මාසය' : 'AI Analysis — This Month'}
-            </span>
+      <Card className="p-6 bg-[hsl(var(--card))] border border-[hsl(var(--border))] shadow-xs">
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="w-8 h-8 rounded-xl bg-[hsl(var(--primary-muted))] flex items-center justify-center text-[hsl(var(--primary))]">
+            <Sparkles className="w-4 h-4" />
           </div>
-          <p className="text-base leading-relaxed text-white/90 font-medium max-w-lg">
-            {loading ? (
-              <span className="animate-pulse">
-                {lang === 'si' ? 'AI විශ්ලේෂණය සකස් කරමින් (තත්පර කිහිපයක් ගතවනු ඇත)...' : 'Generating AI analysis (this may take a few seconds)...'}
-              </span>
-            ) : data?.insights?.summary || (lang === 'si' ? 'දත්ත ලබා ගැනීමට නොහැකි විය.' : 'Could not fetch data.')}
-          </p>
+          <span className="text-sm font-bold text-[hsl(var(--foreground))]">
+            {lang === 'si' ? 'AI විශ්ලේෂණය — මෙම මාසය' : 'AI Analysis — This Month'}
+          </span>
         </div>
-        <div className="absolute -right-6 -top-6 w-28 h-28 rounded-full bg-white/10" />
-        <div className="absolute right-4 -bottom-8 w-20 h-20 rounded-full bg-white/8" />
-        <Sparkles className="absolute right-8 bottom-6 w-12 h-12 text-white/10" />
-      </div>
+        <p className="text-sm sm:text-base leading-relaxed text-[hsl(var(--foreground))] font-normal max-w-3xl">
+          {loading ? (
+            <span className="animate-pulse text-[hsl(var(--foreground-muted))]">
+              {lang === 'si' ? 'AI විශ්ලේෂණය සකස් කරමින් (තත්පර කිහිපයක් ගතවනු ඇත)...' : 'Generating AI analysis (this may take a few seconds)...'}
+            </span>
+          ) : data?.insights?.summary || (lang === 'si' ? 'දත්ත ලබා ගැනීමට නොහැකි විය.' : 'Could not fetch data.')}
+        </p>
+      </Card>
 
       {/* Quick stats row */}
       <div className="grid grid-cols-4 gap-2">
