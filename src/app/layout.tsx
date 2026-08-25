@@ -30,6 +30,12 @@ export const metadata: Metadata = {
   description:
     'SalonSync helps Sri Lankan salon and barbershop owners track sales, expenses, appointments and customers — replacing paper notebooks with a world-class digital tool.',
   keywords: ['salon management', 'barbershop', 'Sri Lanka', 'sales tracking', 'appointments'],
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'SalonSync',
+  },
   openGraph: {
     title: 'SalonSync — Smart Salon Management',
     description: 'Track sales, expenses, and appointments for your salon or barbershop.',
@@ -51,18 +57,36 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${notoSansSinhala.variable}`}
     >
+      <head>
+        <meta name="theme-color" content="#C2522B" />
+        <link rel="apple-touch-icon" href="/icons/icon.svg" />
+        <meta name="mobile-web-app-capable" content="yes" />
+      </head>
       <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
-          disableTransitionOnChange={false}
+          disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
             {children}
             <Toaster />
           </NextIntlClientProvider>
         </ThemeProvider>
+
+        {/* PWA Service Worker Registration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js');
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   )

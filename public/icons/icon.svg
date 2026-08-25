@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#C2522B"/>
+  <!-- Scissors icon (centered, white) -->
+  <g transform="translate(256,256)" fill="none" stroke="white" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left blade -->
+    <circle cx="-72" cy="72" r="44"/>
+    <!-- Right blade -->
+    <circle cx="72" cy="72" r="44"/>
+    <!-- Left handle arm -->
+    <line x1="-37" y1="41" x2="88" y2="-104"/>
+    <!-- Right handle arm -->
+    <line x1="37" y1="41" x2="-88" y2="-104"/>
+    <!-- Screw dot -->
+    <circle cx="0" cy="-8" r="8" fill="white" stroke="none"/>
+  </g>
+</svg>
