@@ -1,0 +1,251 @@
+{
+  "nav": {
+    "dashboard": "උපකරණ පුවරුව",
+    "appointments": "හමුවීම්",
+    "sales": "විකුණුම්",
+    "expenses": "වියදම්",
+    "customers": "පාරිභෝගිකයන්",
+    "inventory": "තොග",
+    "staff": "කාර්ය මණ්ඩලය",
+    "reports": "වාර්තා",
+    "insights": "අවබෝධය",
+    "settings": "සැකසීම්"
+  },
+  "common": {
+    "save": "සුරකින්න",
+    "cancel": "අවලංගු කරන්න",
+    "delete": "මකන්න",
+    "edit": "සංස්කරණය",
+    "back": "ආපසු",
+    "add": "එකතු කරන්න",
+    "search": "සෙවීම",
+    "filter": "පෙරන්න",
+    "loading": "පූරණය වෙමින්...",
+    "noResults": "ප්‍රතිඵල හමු නොවිය",
+    "confirmDelete": "ඔබට මේ ඉවත් කිරීමට අවශ්‍යද?",
+    "confirmDeleteDesc": "මෙම ක්‍රියාව අහෝ කළ නොහැකිය.",
+    "actions": "ක්‍රියා",
+    "status": "තත්ත්වය",
+    "date": "දිනය",
+    "amount": "මුදල",
+    "name": "නම",
+    "phone": "දුරකථන",
+    "notes": "සටහන්",
+    "category": "ප්‍රවර්ගය",
+    "today": "අද",
+    "yesterday": "ඊයේ",
+    "thisWeek": "මෙම සතිය",
+    "thisMonth": "මෙම මාසය",
+    "all": "සියල්ල",
+    "new": "නව",
+    "view": "බලන්න",
+    "comingSoon": "ඉදිරියේ දී",
+    "comingSoonDesc": "මෙම අංගය සංවර්ධනය වෙමින් පවතී. ඉදිරියේ නැවත පරීක්ෂා කරන්න!",
+    "error": "දෝෂයක් ඇති විය",
+    "tryAgain": "නැවත උත්සාහ කරන්න",
+    "success": "සාර්ථකයි",
+    "required": "අවශ්‍යයි"
+  },
+  "auth": {
+    "login": "පිවිසෙන්න",
+    "signup": "ගිණුමක් සාදන්න",
+    "logout": "ඉවත් වන්න",
+    "email": "විද්‍යුත් තැපෑල",
+    "password": "මුරපදය",
+    "confirmPassword": "මුරපදය තහවුරු කරන්න",
+    "forgotPassword": "මුරපදය අමතකද?",
+    "resetPassword": "මුරපදය යළි සකසන්න",
+    "sendResetEmail": "යළි සැකසීමේ විද්‍යුත් තැපෑල යවන්න",
+    "backToLogin": "පිවිසීමට ආපසු",
+    "noAccount": "ගිණුමක් නැද්ද?",
+    "hasAccount": "දැනටමත් ගිණුමක් තිබේද?",
+    "signupLink": "ගිණුමක් සාදන්න",
+    "loginLink": "පිවිසෙන්න",
+    "emailPlaceholder": "ඔබේ@email.com",
+    "passwordPlaceholder": "••••••••",
+    "orContinueWith": "හෝ මෙමගින් ඉදිරිය ද",
+    "loginSuccess": "නැවත සාදරයෙන් පිළිගනිමු!",
+    "signupSuccess": "ගිණුම සාදා ගනිමු!",
+    "resetEmailSent": "යළි සැකසීමේ විද්‍යුත් තැපෑල යවා ඇත.",
+    "passwordReset": "මුරපදය යළි සකසා ඇත. කරුණාකර නැවත පිවිසෙන්න.",
+    "invalidCredentials": "වලංගු නොවන විද්‍යුත් තැපෑල හෝ මුරපදය."
+  },
+  "onboarding": {
+    "title": "ඔබේ සැලෝනය සකසන්න",
+    "subtitle": "ආරම්භ කිරීමට ඔබේ ව්‍යාපාරය ගැන කියන්න",
+    "salonName": "සැලෝන් නම",
+    "salonNamePlaceholder": "උදා: කුමාරගේ බාබර් ශොප්",
+    "salonPhone": "ව්‍යාපාර දුරකථන",
+    "salonAddress": "ලිපිනය",
+    "salonAddressPlaceholder": "උදා: 12 ගාලු පාර, කොළඹ 3",
+    "complete": "ඉදිරියට යමු!",
+    "skip": "දැනට ඉදිරියට"
+  },
+  "dashboard": {
+    "title": "උපකරණ පුවරුව",
+    "greeting": "සුභ {time}, {name}",
+    "todayProfit": "අද ලාභය",
+    "todayRevenue": "ආදායම",
+    "todayExpenses": "වියදම්",
+    "todayAppointments": "හමුවීම්",
+    "weeklyTrend": "දින 7 ප්‍රවණතාව",
+    "needsAttention": "අවධානය අවශ්‍යයි",
+    "lowStock": "අඩු තොගය",
+    "noShowFollowUp": "නොපැමිණීම - follow-up",
+    "upcomingToday": "අද ඉදිරි",
+    "noActivity": "අද ක්‍රියාකාරකම් නැත",
+    "noActivityDesc": "ඔබේ dashboard ජීවමාන කිරීමට ප්‍රථම විකුණුමක් හෝ හමුවීමක් එකතු කරන්න.",
+    "addSale": "විකුණුම් එකතු කරන්න",
+    "addAppointment": "හමුවීමක් එකතු කරන්න",
+    "profit": "ලාභය",
+    "revenue": "ආදායම",
+    "expenses": "වියදම්",
+    "viewAll": "සියල්ල බලන්න"
+  },
+  "appointments": {
+    "title": "හමුවීම්",
+    "new": "නව හමුවීම",
+    "detail": "හමුවීම් විස්තර",
+    "service": "සේවාව",
+    "servicePlaceholder": "උදා: කෙස් කැපීම, රැව් කැපීම",
+    "scheduledAt": "දිනය සහ වේලාව",
+    "price": "මිල (රු.)",
+    "customer": "පාරිභෝගිකයා",
+    "staff": "කාර්ය මණ්ඩල සාමාජිකයා",
+    "status": "තත්ත්වය",
+    "statuses": {
+      "booked": "වෙන්කරගෙන",
+      "completed": "සම්පූර්ණ",
+      "no-show": "නොපැමිණීම",
+      "cancelled": "අවලංගු"
+    },
+    "noAppointments": "හමුවීම් නැත",
+    "noAppointmentsDesc": "ආරම්භ කිරීමට ප්‍රථම හමුවීම book කරන්න.",
+    "saved": "හමුවීම සුරකිනා ලදී!",
+    "deleted": "හමුවීම මකා දමා ඇත.",
+    "whatsappReminder": "WhatsApp මතක් කිරීම යවන්න",
+    "selectCustomer": "පාරිභෝගිකයෙකු තෝරන්න",
+    "selectStaff": "කාර්ය මණ්ඩල සාමාජිකයෙකු",
+    "walkIn": "Walk-in"
+  },
+  "sales": {
+    "title": "විකුණුම්",
+    "new": "නව විකුණුම",
+    "amount": "මුදල (රු.)",
+    "paymentMethod": "ගෙවීම් ක්‍රමය",
+    "paymentMethods": {
+      "cash": "මුදල්",
+      "card": "කාඩ්",
+      "bank_transfer": "බැංකු හුවමාරුව",
+      "other": "වෙනත්"
+    },
+    "note": "සටහන (අවශ්‍ය නොවේ)",
+    "notePlaceholder": "උදා: කෙස් කැපීම + රැවුල",
+    "customer": "පාරිභෝගිකයා (අවශ්‍ය නොවේ)",
+    "linkedAppointment": "සම්බන්ධිත හමුවීම",
+    "noSales": "තවම විකුණුම් නැත",
+    "noSalesDesc": "ආදායම ලුහු දැකීමට ප්‍රථම විකුණුම ලියාපදිංචි කරන්න.",
+    "saved": "විකුණුම ලියාපදිංචි කරන ලදී!",
+    "deleted": "විකුණුම මකා දමා ඇත.",
+    "totalToday": "අදට දෙකුළ",
+    "filterByMethod": "ගෙවීම් ක්‍රමය අනුව"
+  },
+  "expenses": {
+    "title": "වියදම්",
+    "new": "නව වියදම",
+    "category": "ප්‍රවර්ගය",
+    "categories": {
+      "supplies": "සැපයුම්",
+      "utilities": "උපයෝගිතා",
+      "rent": "කුළිය",
+      "salary": "වැටුප",
+      "equipment": "උපකරණ",
+      "marketing": "අලෙවිකරණය",
+      "other": "වෙනත්"
+    },
+    "amount": "මුදල (රු.)",
+    "note": "විස්තරය",
+    "notePlaceholder": "මෙම වියදම කුමක් සඳහාද?",
+    "noExpenses": "තවම වියදම් නැත",
+    "noExpensesDesc": "ඔබේ ලාභදායිතාව තේරුම් ගැනීමට ව්‍යාපාරික වියදම් ලුහු දකින්න.",
+    "saved": "වියදම ලියාපදිංචි කරන ලදී!",
+    "deleted": "වියදම මකා දමා ඇත.",
+    "totalThisMonth": "මෙම මාසය දෙකුළ"
+  },
+  "customers": {
+    "title": "පාරිභෝගිකයන්",
+    "new": "නව පාරිභෝගිකයා",
+    "profile": "පාරිභෝගික ස්ථිරාංශය",
+    "phone": "දුරකථන අංකය",
+    "phonePlaceholder": "උදා: 0771234567",
+    "notes": "සටහන්",
+    "notesPlaceholder": "මෙම පාරිභෝගිකයා ගැන සටහන්",
+    "visitHistory": "පැමිණීමේ ඉතිහාසය",
+    "totalSpend": "දෙකුළ වැය",
+    "totalVisits": "දෙකුළ පැමිණීම්",
+    "lastVisit": "අවසාන පැමිණීම",
+    "noCustomers": "තවම පාරිභෝගිකයන් නැත",
+    "noCustomersDesc": "ඔබේ ගනුදෙනුකරුවන්ගේ ලැයිස්තුව ගොඩනැගීමට ප්‍රථම ගනුදෙනුකරුවෙකු එකතු කරන්න.",
+    "noVisits": "තවම පැමිණීම් ලියාපදිංචි නැත",
+    "saved": "පාරිභෝගිකයා සුරකිනා ලදී!",
+    "deleted": "පාරිභෝගිකයා මකා දමා ඇත.",
+    "searchPlaceholder": "නම හෝ දුරකථනය..."
+  },
+  "settings": {
+    "title": "සැකසීම්",
+    "profile": {
+      "title": "සැලෝන් ස්ථිරාංශය",
+      "salonName": "සැලෝන් නම",
+      "phone": "දුරකථන",
+      "address": "ලිපිනය",
+      "saved": "ස්ථිරාංශය යාවත්කාලීන කරන ලදී!"
+    },
+    "appearance": {
+      "title": "පෙනුම",
+      "theme": "තේමාව",
+      "language": "භාෂාව",
+      "themes": {
+        "light": "ආලෝකය",
+        "dark": "අඳුර",
+        "system": "පද්ධතිය"
+      },
+      "languages": {
+        "en": "English",
+        "si": "සිංහල"
+      },
+      "saved": "පෙනුම යාවත්කාලීන කරන ලදී!"
+    },
+    "team": {
+      "title": "කණ්ඩායම",
+      "comingSoon": "කණ්ඩායම් කළමනාකරණය ඉදිරියේ"
+    },
+    "billing": {
+      "title": "බිල්",
+      "comingSoon": "බිල් කළමනාකරණය ඉදිරියේ"
+    }
+  },
+  "inventory": {
+    "title": "තොග",
+    "comingSoon": "තොග ලුහු දැකීම ඉදිරියේ",
+    "lowStock": "අඩු තොගය",
+    "stockQuantity": "තොග ප්‍රමාණය",
+    "threshold": "අඩු තොග ඇඟවීම"
+  },
+  "staff": {
+    "title": "කාර්ය මණ්ඩලය",
+    "comingSoon": "කාර්ය මණ්ඩල කළමනාකරණය ඉදිරියේ",
+    "commission": "කොමිසම",
+    "commissionPercent": "කොමිසම %"
+  },
+  "reports": {
+    "title": "වාර්තා",
+    "comingSoon": "විස්තරාත්මක වාර්තා ඉදිරියේ",
+    "profitLoss": "ලාභ සහ අලාභ"
+  },
+  "insights": {
+    "title": "අවබෝධය",
+    "comingSoon": "AI-ශක්තිමත් අවබෝධය ඉදිරියේ",
+    "comingSoonDesc": "SalonSync ඔබේ ව්‍යාපාරික දත්ත විශ්ලේෂණය කර සිංහලෙන් හෝ ඉංග්‍රීසියෙන් ඔබේ කාර්යසාධනය පිළිබඳ සරල සාරාංශ ලබා දෙනු ඇත.",
+    "monthlyReport": "මාසික කාර්යසාධන සාරාංශය"
+  }
+}

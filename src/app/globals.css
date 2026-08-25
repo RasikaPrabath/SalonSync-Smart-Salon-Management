@@ -1,26 +1,321 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ===================================================================
+   SALONSYNC DESIGN TOKENS
+   =================================================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --- LIGHT MODE --- */
+
+    /* Backgrounds */
+    --background: 40 20% 97%;       /* warm off-white #FAF9F7 */
+    --background-2: 40 15% 94%;     /* card bg */
+    --background-3: 40 10% 91%;     /* elevated card */
+    --background-4: 40 8% 88%;      /* highest elevation */
+
+    /* Foregrounds */
+    --foreground: 220 15% 10%;      /* near-black text */
+    --foreground-muted: 220 8% 45%; /* secondary text */
+    --foreground-subtle: 220 6% 65%;/* captions, timestamps */
+
+    /* Primary accent — Deep Terracotta */
+    --primary: 16 67% 47%;          /* #C2522B */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 16 67% 40%;
+    --primary-muted: 16 67% 47% / 0.12;
+
+    /* Semantic Colors */
+    --success: 142 60% 32%;         /* green for profit/completed */
+    --success-bg: 142 60% 32% / 0.1;
+    --success-foreground: 142 60% 25%;
+
+    --danger: 0 72% 48%;            /* red/rose for expenses/no-show */
+    --danger-bg: 0 72% 48% / 0.1;
+    --danger-foreground: 0 72% 40%;
+
+    --warning: 38 90% 48%;          /* amber for warnings */
+    --warning-bg: 38 90% 48% / 0.1;
+    --warning-foreground: 38 85% 35%;
+
+    --info: 210 70% 48%;            /* blue for info */
+    --info-bg: 210 70% 48% / 0.1;
+    --info-foreground: 210 70% 38%;
+
+    /* Card & borders */
+    --card: 40 15% 94%;
+    --card-foreground: 220 15% 10%;
+    --border: 220 10% 88%;
+    --border-subtle: 220 6% 92%;
+    --ring: 16 67% 47%;
+
+    /* Inputs */
+    --input: 40 10% 91%;
+    --input-foreground: 220 15% 10%;
+    --input-placeholder: 220 6% 60%;
+
+    /* Sidebar */
+    --sidebar-bg: 40 15% 95%;
+    --sidebar-border: 220 10% 88%;
+    --sidebar-active-bg: 16 67% 47% / 0.1;
+    --sidebar-active-text: 16 67% 47%;
+
+    /* Popover / Dialog */
+    --popover: 40 15% 97%;
+    --popover-foreground: 220 15% 10%;
+
+    /* Chart colors (themed) */
+    --chart-1: 16 67% 47%;
+    --chart-2: 142 60% 32%;
+    --chart-3: 210 70% 48%;
+    --chart-4: 38 90% 48%;
+    --chart-5: 280 60% 50%;
+  }
+
+  .dark {
+    /* --- DARK MODE --- */
+
+    /* Elevation scale — true dark, not inverted light */
+    --background: 240 6% 4%;        /* #0A0A0B */
+    --background-2: 240 5% 7%;      /* #111113 */
+    --background-3: 240 4% 9%;      /* #17181A */
+    --background-4: 240 4% 12%;     /* #1F2023 */
+
+    /* Foregrounds */
+    --foreground: 0 0% 95%;
+    --foreground-muted: 220 8% 60%;
+    --foreground-subtle: 220 6% 42%;
+
+    /* Primary accent — slightly brighter in dark */
+    --primary: 16 72% 56%;          /* terracotta, lighter in dark */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 16 72% 62%;
+    --primary-muted: 16 72% 56% / 0.15;
+
+    /* Semantic Colors (dark-tuned — slightly desaturated, brighter) */
+    --success: 142 55% 42%;
+    --success-bg: 142 55% 42% / 0.12;
+    --success-foreground: 142 55% 55%;
+
+    --danger: 0 65% 56%;
+    --danger-bg: 0 65% 56% / 0.12;
+    --danger-foreground: 0 65% 68%;
+
+    --warning: 38 85% 56%;
+    --warning-bg: 38 85% 56% / 0.12;
+    --warning-foreground: 38 85% 65%;
+
+    --info: 210 65% 58%;
+    --info-bg: 210 65% 58% / 0.12;
+    --info-foreground: 210 65% 70%;
+
+    /* Card & borders */
+    --card: 240 5% 7%;
+    --card-foreground: 0 0% 95%;
+    --border: 0 0% 100% / 0.08;
+    --border-subtle: 0 0% 100% / 0.04;
+    --ring: 16 72% 56%;
+
+    /* Inputs */
+    --input: 240 4% 12%;
+    --input-foreground: 0 0% 95%;
+    --input-placeholder: 220 6% 42%;
+
+    /* Sidebar */
+    --sidebar-bg: 240 6% 5%;
+    --sidebar-border: 0 0% 100% / 0.06;
+    --sidebar-active-bg: 16 72% 56% / 0.12;
+    --sidebar-active-text: 16 72% 56%;
+
+    /* Popover / Dialog */
+    --popover: 240 5% 9%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Chart colors (dark-tuned) */
+    --chart-1: 16 72% 56%;
+    --chart-2: 142 55% 48%;
+    --chart-3: 210 65% 58%;
+    --chart-4: 38 85% 56%;
+    --chart-5: 280 55% 62%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+  }
+
+  /* Tabular numbers for financial data */
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Sinhala text needs extra line height */
+  .sinhala,
+  [lang="si"] {
+    line-height: 1.8;
+  }
+
+  /* Skeleton animation */
+  @keyframes skeleton-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .skeleton {
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+    background-color: hsl(var(--border));
+    border-radius: 0.375rem;
+  }
+
+  /* Smooth theme transition */
+  *,
+  *::before,
+  *::after {
+    transition: background-color 150ms ease, border-color 150ms ease, color 80ms ease;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 99px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground-subtle));
+  }
+}
+
+/* ===================================================================
+   TYPOGRAPHY SCALE
+   =================================================================== */
+
+@layer utilities {
+  /* Hero numbers — dashboard profit display */
+  .text-hero {
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+
+  /* Page titles */
+  .text-page-title {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  /* Section headers */
+  .text-section-header {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: hsl(var(--foreground-subtle));
+  }
+
+  /* Card label */
+  .text-card-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: hsl(var(--foreground-muted));
+  }
+
+  /* Caption / timestamp */
+  .text-caption {
+    font-size: 0.75rem;
+    color: hsl(var(--foreground-subtle));
+  }
+
+  /* Muted text */
+  .text-muted {
+    color: hsl(var(--foreground-muted));
+  }
+
+  .text-subtle {
+    color: hsl(var(--foreground-subtle));
+  }
+
+  /* Status chip utilities */
+  .chip-success {
+    color: hsl(var(--success-foreground));
+    background-color: hsl(var(--success-bg));
+    border: 1px solid hsl(var(--success) / 0.2);
+  }
+
+  .chip-danger {
+    color: hsl(var(--danger-foreground));
+    background-color: hsl(var(--danger-bg));
+    border: 1px solid hsl(var(--danger) / 0.2);
+  }
+
+  .chip-warning {
+    color: hsl(var(--warning-foreground));
+    background-color: hsl(var(--warning-bg));
+    border: 1px solid hsl(var(--warning) / 0.2);
+  }
+
+  .chip-info {
+    color: hsl(var(--info-foreground));
+    background-color: hsl(var(--info-bg));
+    border: 1px solid hsl(var(--info) / 0.2);
+  }
+
+  .chip-primary {
+    color: hsl(var(--primary));
+    background-color: hsl(var(--primary-muted));
+    border: 1px solid hsl(var(--primary) / 0.2);
+  }
+
+  /* Card utility */
+  .card-base {
+    background-color: hsl(var(--card));
+    border-radius: 0.75rem;
+    border: 1px solid hsl(var(--border-subtle));
+  }
+
+  .card-elevated {
+    background-color: hsl(var(--background-3));
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px hsl(0 0% 0% / 0.08), 0 4px 12px hsl(0 0% 0% / 0.06);
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  /* Glass effect */
+  .glass {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
