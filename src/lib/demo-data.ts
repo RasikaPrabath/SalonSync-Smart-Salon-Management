@@ -65,7 +65,7 @@ export const DEMO_CUSTOMERS: Customer[] = [
 ]
 
 // Generate 30 days of sales data deterministically
-function daysAgo(n: number, i: number): Date {
+function daysAgo(n: number, i: number = 0): Date {
   const d = new Date()
   d.setDate(d.getDate() - n)
   // deterministic hours and minutes based on index
