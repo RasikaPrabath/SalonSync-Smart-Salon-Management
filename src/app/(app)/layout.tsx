@@ -3,6 +3,8 @@ import { BottomTabBar } from '@/components/layout/bottom-tab-bar'
 import { TopNav } from '@/components/layout/top-nav'
 import { ToastProvider } from '@/components/ui/toaster'
 
+export const dynamic = 'force-dynamic'
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <ToastProvider>

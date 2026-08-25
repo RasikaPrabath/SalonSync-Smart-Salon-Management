@@ -5,16 +5,15 @@ import { useToast } from '@/components/ui/toaster'
 import { Button } from '@/components/ui/button'
 import { Input, Textarea } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { DEMO_SALON } from '@/lib/demo-data'
 import { Store } from 'lucide-react'
 
 export default function ProfileSettingsPage() {
   const { toast } = useToast()
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
-    name: DEMO_SALON.name,
-    phone: DEMO_SALON.phone ?? '',
-    address: DEMO_SALON.address ?? '',
+    name: 'My Salon',
+    phone: '',
+    address: '',
   })
 
   const handleSubmit = async (e: React.FormEvent) => {

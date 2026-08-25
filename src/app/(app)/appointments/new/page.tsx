@@ -1,93 +1,89 @@
 'use client'
 
 import { useState } from 'react'
-import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, CalendarDays } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Input, Select, Textarea } from '@/components/ui/input'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useToast } from '@/components/ui/toaster'
 import Link from 'next/link'
-import { DEMO_CUSTOMERS, DEMO_STAFF } from '@/lib/demo-data'
-import { formatDateForInput } from '@/lib/utils'
-
-const statusOptions = [
-  { value: 'booked', label: 'Booked' },
-  { value: 'completed', label: 'Completed' },
-  { value: 'no-show', label: 'No Show' },
-  { value: 'cancelled', label: 'Cancelled' },
-]
+import { ArrowLeft } from 'lucide-react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { addAppointment } from '@/app/actions/appointments'
+import { useToast } from '@/components/ui/toaster'
 
 export default function NewAppointmentPage() {
-  const t = useTranslations('appointments')
   const router = useRouter()
   const { toast } = useToast()
   const [loading, setLoading] = useState(false)
   const [form, setForm] = useState({
-    serviceName: '',
-    customerId: '',
-    staffId: '',
-    scheduledAt: formatDateForInput(new Date()),
-    price: '',
-    status: 'booked',
+    customer_name: '',
+    service: '',
+    date: new Date().toISOString().split('T')[0],
+    time: '10:00',
+    price: ''
   })
 
-  const customerOptions = [
-    { value: '', label: t('walkIn') },
-    ...DEMO_CUSTOMERS.map(c => ({ value: c.id, label: c.name })),
-  ]
-
-  const staffOptions = [
-    { value: '', label: 'Any staff' },
-    ...DEMO_STAFF.map(s => ({ value: s.id, label: s.name })),
-  ]
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
-    await new Promise(r => setTimeout(r, 600))
+
+    const formData = new FormData()
+    formData.append('customer_name', form.customer_name)
+    formData.append('service', form.service)
+    formData.append('date', form.date)
+    formData.append('time', form.time)
+    formData.append('price', form.price)
+
+    const res = await addAppointment(formData)
+    
     setLoading(false)
-    toast({ type: 'success', title: t('saved') })
-    router.push('/appointments')
+    if (res.error) {
+      toast({ title: 'Error', description: res.error, type: 'error' })
+    } else {
+      toast({ title: 'Success', description: 'Appointment booked successfully', type: 'success' })
+      router.push('/appointments')
+    }
   }
 
   return (
     <div className="max-w-2xl mx-auto w-full pt-4">
       <div className="flex items-center gap-3 mb-6">
-        <Link href="/appointments">
-          <Button variant="ghost" size="icon"><ArrowLeft className="w-4 h-4" /></Button>
-        </Link>
-        <h1 className="text-page-title">{t('new')}</h1>
+        <Link href="/appointments"><Button variant="ghost" size="icon"><ArrowLeft className="w-4 h-4" /></Button></Link>
+        <h1 className="text-page-title">Book Appointment</h1>
       </div>
+
       <Card>
         <CardHeader>
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-[hsl(var(--info-bg))] flex items-center justify-center">
-              <CalendarDays className="w-5 h-5 text-[hsl(var(--info-foreground))]" />
-            </div>
-            <CardTitle>{t('new')}</CardTitle>
-          </div>
+          <CardTitle>Appointment Details</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Input label={t('service')} required placeholder={t('servicePlaceholder')} value={form.serviceName}
-              onChange={e => setForm(p => ({ ...p, serviceName: e.target.value }))} />
-            <Input label={t('scheduledAt')} type="datetime-local" required value={form.scheduledAt}
-              onChange={e => setForm(p => ({ ...p, scheduledAt: e.target.value }))} />
-            <Input label={t('price')} type="number" min="0" step="50" placeholder="0" required value={form.price}
-              onChange={e => setForm(p => ({ ...p, price: e.target.value }))} />
-            <Select label={t('customer')} options={customerOptions} value={form.customerId}
-              onChange={e => setForm(p => ({ ...p, customerId: e.target.value }))} />
-            <Select label={t('staff')} options={staffOptions} value={form.staffId}
-              onChange={e => setForm(p => ({ ...p, staffId: e.target.value }))} />
-            <Select label={t('status')} options={statusOptions} value={form.status}
-              onChange={e => setForm(p => ({ ...p, status: e.target.value }))} />
-            <div className="flex gap-3 pt-2">
-              <Link href="/appointments" className="flex-1">
-                <Button variant="secondary" className="w-full" type="button">Cancel</Button>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <Input label="Customer Name" placeholder="e.g. Kasun Fernando" required
+                  value={form.customer_name} onChange={e => setForm(p => ({ ...p, customer_name: e.target.value }))} />
+                
+                <Input label="Service" placeholder="e.g. Haircut" required
+                  value={form.service} onChange={e => setForm(p => ({ ...p, service: e.target.value }))} />
+              </div>
+
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <Input label="Date" type="date" required
+                    value={form.date} onChange={e => setForm(p => ({ ...p, date: e.target.value }))} />
+                  <Input label="Time" type="time" required
+                    value={form.time} onChange={e => setForm(p => ({ ...p, time: e.target.value }))} />
+                </div>
+                
+                <Input label="Estimated Price (Rs.)" type="number" min="0" placeholder="0" required
+                  value={form.price} onChange={e => setForm(p => ({ ...p, price: e.target.value }))} />
+              </div>
+            </div>
+
+            <div className="flex gap-3 pt-4 border-t border-[hsl(var(--border-subtle))] md:justify-end">
+              <Link href="/appointments" className="flex-1 md:flex-none">
+                <Button variant="secondary" className="w-full md:w-auto" type="button">Cancel</Button>
               </Link>
-              <Button type="submit" loading={loading} className="flex-1">Book Appointment</Button>
+              <Button type="submit" loading={loading} className="flex-1 md:flex-none">Book</Button>
             </div>
           </form>
         </CardContent>

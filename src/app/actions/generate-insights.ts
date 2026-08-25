@@ -89,3 +89,4 @@ CRITICAL RULES:
     return { stats: null, insights: null }
   }
 }
+

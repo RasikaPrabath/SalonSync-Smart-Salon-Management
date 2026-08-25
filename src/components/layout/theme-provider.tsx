@@ -8,7 +8,9 @@ type ThemeProviderProps = ComponentProps<typeof NextThemesProvider>
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
   const orig = console.error
   console.error = (...args: unknown[]) => {
-    if (typeof args[0] === 'string' && args[0].includes('Encountered a script tag')) return
+    const msg = args.map(a => String(a)).join(' ')
+    if (msg.includes('Encountered a script tag')) return
+    if (msg.includes('bis_skin_checked')) return
     orig.apply(console, args)
   }
 }
