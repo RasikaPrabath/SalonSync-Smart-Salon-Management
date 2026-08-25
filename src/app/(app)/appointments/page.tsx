@@ -48,7 +48,7 @@ export default function AppointmentsPage() {
                 : 'bg-[hsl(var(--background-3))] text-[hsl(var(--foreground-muted))] hover:text-[hsl(var(--foreground))]'
             }`}
           >
-            {s === 'all' ? 'All' : t(`statuses.${s as keyof typeof t.statuses}`)}
+            {s === 'all' ? 'All' : t(`statuses.${s}` as any)}
           </button>
         ))}
       </div>

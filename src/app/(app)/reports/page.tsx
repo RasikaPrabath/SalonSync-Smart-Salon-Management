@@ -213,7 +213,7 @@ export default function ReportsPage() {
                       <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(v: number) => formatCurrency(v)} />
+                  <Tooltip formatter={(v: any) => formatCurrency(v)} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -240,7 +240,7 @@ export default function ReportsPage() {
                     tickLine={false} axisLine={false} tickFormatter={v => `${(v / 1000).toFixed(0)}k`} />
                   <YAxis type="category" dataKey="service" tick={{ fontSize: 10, fill: 'hsl(var(--foreground-muted))' }}
                     tickLine={false} axisLine={false} width={50} />
-                  <Tooltip formatter={(v: number) => formatCurrency(v)} />
+                  <Tooltip formatter={(v: any) => formatCurrency(v)} />
                   <Bar dataKey="revenue" radius={[0, 4, 4, 0]} fill="hsl(16 72% 56%)" />
                 </BarChart>
               </ResponsiveContainer>
