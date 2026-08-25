@@ -1,4 +1,4 @@
-import type { Appointment, Customer, DashboardMetrics, Expense, Sale, Salon, Staff } from '@/types'
+import type { Appointment, Customer, DashboardMetrics, Expense, Product, Sale, Salon, Staff } from '@/types'
 
 // ===================================================================
 // DEMO DATA — Kumara's Barber Shop
@@ -33,6 +33,17 @@ export const DEMO_STAFF: Staff[] = [
     phone: '0759876543',
     createdAt: new Date('2026-02-01'),
   },
+]
+
+export const DEMO_PRODUCTS: Product[] = [
+  { id: 'p1', salonId: 'salon-1', name: 'Wella Shampoo (1L)', stockQuantity: 3, lowStockThreshold: 5, unitCost: 1200 },
+  { id: 'p2', salonId: 'salon-1', name: 'Hair Color – Dark Brown', stockQuantity: 2, lowStockThreshold: 4, unitCost: 850 },
+  { id: 'p3', salonId: 'salon-1', name: 'Razor Blades (Box 100)', stockQuantity: 8, lowStockThreshold: 10, unitCost: 600 },
+  { id: 'p4', salonId: 'salon-1', name: 'Hair Conditioner (500ml)', stockQuantity: 6, lowStockThreshold: 5, unitCost: 750 },
+  { id: 'p5', salonId: 'salon-1', name: 'Beard Oil (100ml)', stockQuantity: 1, lowStockThreshold: 3, unitCost: 950 },
+  { id: 'p6', salonId: 'salon-1', name: 'Talcum Powder (200g)', stockQuantity: 12, lowStockThreshold: 5, unitCost: 250 },
+  { id: 'p7', salonId: 'salon-1', name: 'Hair Gel (250ml)', stockQuantity: 4, lowStockThreshold: 5, unitCost: 450 },
+  { id: 'p8', salonId: 'salon-1', name: 'Sanitizer (500ml)', stockQuantity: 5, lowStockThreshold: 4, unitCost: 380 },
 ]
 
 export const DEMO_CUSTOMERS: Customer[] = [
@@ -210,7 +221,7 @@ export function getDemoDashboardMetrics(): DashboardMetrics {
     todayAppointments: todayAppointments.length || 6,
     weeklyTrend,
     needsAttention: {
-      lowStockItems: [],
+      lowStockItems: DEMO_PRODUCTS.filter(p => p.stockQuantity <= p.lowStockThreshold),
       noShowFollowUps,
       upcomingAppointments: todayAppointments.filter(a => a.status === 'booked'),
     },

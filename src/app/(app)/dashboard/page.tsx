@@ -1,7 +1,7 @@
 'use client'
 
 import { useTranslations } from 'next-intl'
-import { TrendingUp, TrendingDown, CalendarDays, DollarSign, ArrowRight, AlertTriangle, UserX, Clock } from 'lucide-react'
+import { TrendingUp, TrendingDown, CalendarDays, DollarSign, ArrowRight, AlertTriangle, UserX, Clock, Package } from 'lucide-react'
 import Link from 'next/link'
 import {
   AreaChart,
@@ -236,7 +236,7 @@ export default function DashboardPage() {
       </Card>
 
       {/* Needs Attention */}
-      {(metrics.needsAttention.noShowFollowUps.length > 0 || metrics.needsAttention.upcomingAppointments.length > 0) && (
+      {(metrics.needsAttention.noShowFollowUps.length > 0 || metrics.needsAttention.upcomingAppointments.length > 0 || metrics.needsAttention.lowStockItems.length > 0) && (
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -246,7 +246,24 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent className="pt-3">
             <div className="space-y-2">
-              {/* No-show follow-ups */}
+              {/* Low stock items */}
+              {metrics.needsAttention.lowStockItems.slice(0, 3).map(product => (
+                <Link key={product.id} href="/inventory">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-[hsl(var(--warning-bg))] border border-[hsl(var(--warning)/0.15)] hover:border-[hsl(var(--warning)/0.3)] transition-colors">
+                    <div className="flex items-center gap-3">
+                      <Package className="w-4 h-4 text-[hsl(var(--warning-foreground))] shrink-0" />
+                      <div>
+                        <p className="text-sm font-medium text-[hsl(var(--foreground))]">{product.name}</p>
+                        <p className="text-xs text-[hsl(var(--foreground-muted))]">
+                          Only {product.stockQuantity} left — threshold: {product.lowStockThreshold}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="text-xs font-semibold text-[hsl(var(--warning-foreground))]">Low Stock</span>
+                  </div>
+                </Link>
+              ))}
+
               {metrics.needsAttention.noShowFollowUps.map(apt => (
                 <div
                   key={apt.id}
