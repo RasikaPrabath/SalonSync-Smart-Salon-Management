@@ -2,10 +2,11 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Scissors, Bell, Search } from 'lucide-react'
+import { Scissors, LogOut } from 'lucide-react'
 import { ThemeSwitcher } from './theme-switcher'
 import { LanguageSwitcher } from './language-switcher'
 import { cn } from '@/lib/utils'
+import { signOut } from '@/lib/supabase'
 
 const pathTitles: Record<string, string> = {
   '/dashboard': 'Dashboard',
@@ -49,6 +50,13 @@ export function TopNav() {
         <div className="flex items-center gap-1">
           <ThemeSwitcher />
           <LanguageSwitcher />
+          <button 
+            onClick={signOut}
+            className="w-8 h-8 rounded-full flex items-center justify-center text-[hsl(var(--foreground-muted))] hover:text-[hsl(var(--danger))]"
+            title="Sign out"
+          >
+            <LogOut className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </header>

@@ -15,10 +15,12 @@ import {
   Sparkles,
   Settings,
   Scissors,
+  LogOut,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeSwitcher } from './theme-switcher'
 import { LanguageSwitcher } from './language-switcher'
+import { signOut } from '@/lib/supabase'
 
 const navItems = [
   { key: 'dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -83,9 +85,13 @@ export function Sidebar() {
         <ThemeSwitcher />
         <LanguageSwitcher />
         <div className="flex-1" />
-        <div className="w-8 h-8 rounded-full bg-[hsl(var(--primary))] flex items-center justify-center text-white text-xs font-bold">
-          K
-        </div>
+        <button 
+          onClick={signOut}
+          className="w-8 h-8 rounded-full flex items-center justify-center text-[hsl(var(--foreground-muted))] hover:text-[hsl(var(--danger))] hover:bg-[hsl(var(--danger-bg))] transition-colors"
+          title="Sign out"
+        >
+          <LogOut className="w-4 h-4" />
+        </button>
       </div>
     </aside>
   )
