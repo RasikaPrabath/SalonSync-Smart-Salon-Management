@@ -10,11 +10,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { useToast } from '@/components/ui/toaster'
 import Link from 'next/link'
 
+import { addExpense } from '@/app/actions/expenses'
+
 const categoryOptions = [
-  { value: 'supplies', label: 'Supplies' },
-  { value: 'utilities', label: 'Utilities' },
   { value: 'rent', label: 'Rent' },
   { value: 'salary', label: 'Salary' },
+  { value: 'supplies', label: 'Supplies' },
+  { value: 'utilities', label: 'Utilities' },
   { value: 'equipment', label: 'Equipment' },
   { value: 'marketing', label: 'Marketing' },
   { value: 'other', label: 'Other' },
@@ -25,13 +27,25 @@ export default function NewExpensePage() {
   const router = useRouter()
   const { toast } = useToast()
   const [loading, setLoading] = useState(false)
-  const [form, setForm] = useState({ amount: '', category: 'supplies', note: '' })
+  const [form, setForm] = useState({
+    amount: '',
+    category: 'supplies',
+    note: '',
+  })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!form.amount || isNaN(Number(form.amount))) return
+
     setLoading(true)
-    await new Promise(r => setTimeout(r, 600))
+    const { error } = await addExpense(Number(form.amount), form.category, form.note)
     setLoading(false)
+
+    if (error) {
+      toast({ type: 'error', title: 'Error adding expense', description: error })
+      return
+    }
+
     toast({ type: 'success', title: t('saved') })
     router.push('/expenses')
   }
