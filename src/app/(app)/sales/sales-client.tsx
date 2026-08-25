@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ShoppingBag, Plus } from 'lucide-react'
 import { formatCurrency, formatDate, getPaymentMethodLabel } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -23,6 +24,7 @@ type Sale = {
 
 export function SalesClient({ sales }: { sales: Sale[] }) {
   const t = useTranslations('sales')
+  const router = useRouter()
   const [filter, setFilter] = useState<string>('all')
 
   const filtered = filter === 'all'
@@ -87,7 +89,7 @@ export function SalesClient({ sales }: { sales: Sale[] }) {
           title={t('noSales')}
           description={t('noSalesDesc')}
           actionLabel={t('new')}
-          onAction={() => {}}
+          onAction={() => router.push('/sales/new')}
         />
       ) : (
         <div className="space-y-2">

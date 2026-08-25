@@ -48,7 +48,7 @@ export default function NewSalePage() {
   }
 
   return (
-    <div className="max-w-lg">
+    <div className="max-w-xl mx-auto w-full pt-4">
       <div className="flex items-center gap-3 mb-6">
         <Link href="/sales">
           <Button variant="ghost" size="icon">

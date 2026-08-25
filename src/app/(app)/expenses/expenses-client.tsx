@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { TrendingDown, Plus } from 'lucide-react'
 import { formatCurrency, formatDate, getExpenseCategoryLabel } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
@@ -30,6 +31,7 @@ type Expense = {
 
 export function ExpensesClient({ expenses }: { expenses: Expense[] }) {
   const t = useTranslations('expenses')
+  const router = useRouter()
   const [filter, setFilter] = useState('all')
 
   const categories = ['all', 'supplies', 'utilities', 'rent', 'salary', 'equipment', 'marketing', 'other']
@@ -93,7 +95,7 @@ export function ExpensesClient({ expenses }: { expenses: Expense[] }) {
           title={t('noExpenses')}
           description={t('noExpensesDesc')}
           actionLabel={t('new')}
-          onAction={() => {}}
+          onAction={() => router.push('/expenses/new')}
         />
       ) : (
         <div className="space-y-2">
