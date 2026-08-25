@@ -42,6 +42,17 @@ export const metadata: Metadata = {
     description: 'Track sales, expenses, and appointments for your salon or barbershop.',
     type: 'website',
   },
+  icons: {
+    icon: '/icons/icon.svg',
+    apple: '/icons/icon.svg',
+  },
+}
+
+export const viewport = {
+  themeColor: '#C2522B',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 }
 
 export default async function RootLayout({
@@ -58,11 +69,6 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${notoSansSinhala.variable}`}
     >
-      <head>
-        <meta name="theme-color" content="#C2522B" />
-        <link rel="apple-touch-icon" href="/icons/icon.svg" />
-        <meta name="mobile-web-app-capable" content="yes" />
-      </head>
       <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
