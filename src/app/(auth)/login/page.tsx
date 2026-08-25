@@ -127,12 +127,13 @@ export default function LoginPage() {
           </Link>
         </p>
 
-        {/* Demo login hint */}
-        <div className="mt-4 p-3 rounded-xl bg-[hsl(var(--background-3))] text-center">
-          <p className="text-xs text-[hsl(var(--foreground-muted))]">
-            <strong className="text-[hsl(var(--foreground))]">Demo mode</strong> — click Sign In to enter the dashboard
-          </p>
-        </div>
+        {process.env.NEXT_PUBLIC_DEMO_MODE === 'true' && (
+          <div className="mt-4 p-3 rounded-xl bg-[hsl(var(--background-3))] text-center">
+            <p className="text-xs text-[hsl(var(--foreground-muted))]">
+              <strong className="text-[hsl(var(--foreground))]">Demo mode</strong> — click Sign In to enter the dashboard
+            </p>
+          </div>
+        )}
       </CardContent>
     </Card>
   )
