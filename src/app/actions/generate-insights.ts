@@ -57,7 +57,7 @@ export async function generateInsights(lang: 'en' | 'si') {
 
     // Call Gemini
     const model = genAI.getGenerativeModel({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.6-flash',
       systemInstruction: `You are an expert AI business analyst for a Salon. 
 Analyze ONLY the provided data and generate a JSON response exactly matching this structure:
 {
