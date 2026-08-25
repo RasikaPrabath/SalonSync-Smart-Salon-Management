@@ -64,11 +64,12 @@ export const DEMO_CUSTOMERS: Customer[] = [
   { id: 'c15', salonId: 'salon-1', name: 'Sachith Weerasinghe', phone: '0766789015', notes: 'Color treatment occasionally', createdAt: new Date('2026-03-22') },
 ]
 
-// Generate 30 days of sales data
-function daysAgo(n: number): Date {
+// Generate 30 days of sales data deterministically
+function daysAgo(n: number, i: number): Date {
   const d = new Date()
   d.setDate(d.getDate() - n)
-  d.setHours(Math.floor(Math.random() * 8) + 9, Math.floor(Math.random() * 60), 0, 0)
+  // deterministic hours and minutes based on index
+  d.setHours((i % 8) + 9, (i * 13) % 60, 0, 0)
   return d
 }
 
@@ -80,10 +81,10 @@ export const DEMO_SALES: Sale[] = Array.from({ length: 90 }, (_, i) => ({
   id: `sale-${i + 1}`,
   salonId: 'salon-1',
   customerId: i % 4 === 0 ? null : DEMO_CUSTOMERS[i % 15].id,
-  amount: prices[i % prices.length] + Math.floor(Math.random() * 100),
+  amount: prices[i % prices.length] + ((i * 17) % 100), // deterministic fluctuation
   paymentMethod: methods[i % methods.length],
   note: services[i % services.length],
-  createdAt: daysAgo(Math.floor(i / 3)),
+  createdAt: daysAgo(Math.floor(i / 3), i),
   linkedAppointmentId: null,
   customer: i % 4 === 0 ? null : DEMO_CUSTOMERS[i % 15],
 }))
